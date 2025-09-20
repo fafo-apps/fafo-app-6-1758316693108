@@ -126,3 +126,67 @@ body {
   transform: translateY(-2px) rotateZ(0.15deg);
   box-shadow: 0 20px 40px -20px color-mix(in oklab, var(--accent-a) 45%, black);
 }
+
+/* Minimal theme overrides */
+html[data-theme="minimal"] body {
+  background: var(--background);
+  background-image: none;
+  background-attachment: initial;
+  animation: none;
+}
+
+html[data-theme="minimal"] .glass {
+  background: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  border: 1px solid color-mix(in oklab, var(--foreground) 15%, transparent);
+}
+
+html[data-theme="minimal"] .funky-sep { display: none; }
+
+html[data-theme="minimal"] .funky-link {
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  color: var(--foreground);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color .15s ease, opacity .15s ease;
+}
+html[data-theme="minimal"] .funky-link:hover { opacity: .8; }
+
+html[data-theme="minimal"] .funky-title {
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  color: var(--foreground);
+}
+
+html[data-theme="minimal"] .funky-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+  background: transparent;
+  color: var(--foreground);
+  border: 1px solid color-mix(in oklab, var(--foreground) 20%, transparent);
+  box-shadow: none;
+  filter: none;
+  font-weight: 600;
+  transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+}
+html[data-theme="minimal"] .funky-btn:hover { background: color-mix(in oklab, var(--foreground) 6%, transparent); transform: none; box-shadow: none; }
+html[data-theme="minimal"] .funky-btn:focus-visible { outline: 2px solid color-mix(in oklab, var(--foreground) 25%, transparent); box-shadow: none; }
+
+html[data-theme="minimal"] .funky-card {
+  position: relative;
+  border-radius: .5rem;
+  border: 1px solid color-mix(in oklab, var(--foreground) 15%, transparent);
+  background: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: none;
+  transition: background-color .15s ease;
+}
+html[data-theme="minimal"] .funky-card:hover { background: color-mix(in oklab, var(--foreground) 4%, transparent); transform: none; box-shadow: none; }
