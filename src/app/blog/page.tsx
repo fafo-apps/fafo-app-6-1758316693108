@@ -19,10 +19,10 @@ export default function BlogIndex() {
   const posts = getAllPosts();
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold">All posts</h1>
+      <h1 className="funky-title text-3xl font-extrabold">All posts</h1>
       <ul className="space-y-4">
         {posts.map((post) => (
-          <li key={post.slug} className="rounded-lg border border-black/10 dark:border-white/15 p-4">
+          <li key={post.slug} className="funky-card p-4">
             <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
               <h2 className="text-lg font-semibold">
                 <Link href={`/blog/${post.slug}`} className="hover:underline">
@@ -33,7 +33,7 @@ export default function BlogIndex() {
             </div>
             <p className="mt-2 text-sm text-black/70 dark:text-white/70">{post.excerpt}</p>
             <div className="mt-3">
-              <Link href={`/blog/${post.slug}`} className="text-sm text-blue-600 dark:text-blue-400 hover:underline">
+              <Link href={`/blog/${post.slug}`} className="text-sm funky-link">
                 Read more →
               </Link>
             </div>

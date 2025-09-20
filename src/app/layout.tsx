@@ -25,17 +25,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>\n        <header className="border-b border-black/10 dark:border-white/15">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}>
+        <header className="glass sticky top-0 z-40 relative">
           <div className="mx-auto max-w-4xl px-6 py-4 flex items-center justify-between">
-            <Link href="/" className="font-bold text-lg">RevUp</Link>
+            <Link href="/" className="font-extrabold text-lg funky-link">RevUp</Link>
             <nav className="flex items-center gap-6 text-sm">
-              <Link href="/" className="hover:underline">Home</Link>
-              <Link href="/blog" className="hover:underline">Blog</Link>
+              <Link href="/" className="funky-link">Home</Link>
+              <Link href="/blog" className="funky-link">Blog</Link>
             </nav>
           </div>
+          <div aria-hidden className="funky-sep" />
         </header>
         <main className="mx-auto max-w-4xl px-6 py-8">{children}</main>
-        <footer className="border-t border-black/10 dark:border-white/15">
+        <footer className="glass">
           <div className="mx-auto max-w-4xl px-6 py-6 text-sm text-black/60 dark:text-white/70">
             © {new Date().getFullYear()} RevUp. All rights reserved.
           </div>
