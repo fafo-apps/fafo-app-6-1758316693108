@@ -3,7 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  /* Funky accents */
+  /* Accents */
   --accent-a: #a855f7; /* violet */
   --accent-b: #06b6d4; /* cyan */
   --accent-c: #f59e0b; /* amber */
@@ -28,7 +28,7 @@
   }
 }
 
-/* Funky ambient background */
+/* Ambient background for glass look */
 body {
   background:
     radial-gradient(900px 500px at 0% 0%, color-mix(in oklab, var(--accent-a) 28%, transparent), transparent 60%),
@@ -63,12 +63,13 @@ body {
 /* Glassy surface for header/footer */
 .glass {
   background: var(--glass);
-  -webkit-backdrop-filter: blur(10px) saturate(120%);
-  backdrop-filter: blur(10px) saturate(120%);
-  border-color: rgb(255 255 255 / 0.25);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid color-mix(in oklab, white 35%, transparent);
+  box-shadow: 0 10px 30px -20px rgb(0 0 0 / 0.45), inset 0 1px 0 rgb(255 255 255 / 0.2);
 }
 
-/* Funky gradient separator bar */
+/* Gradient separator bar */
 .funky-sep {
   height: 2px;
   background: linear-gradient(90deg, var(--accent-a), var(--accent-b), var(--accent-c));
@@ -85,7 +86,7 @@ body {
 }
 .funky-link:hover { opacity: .8; }
 
-/* Funky title gradient */
+/* Gradient title */
 .funky-title {
   background-image: linear-gradient(90deg, var(--accent-a), var(--accent-b), var(--accent-c));
   -webkit-background-clip: text;
@@ -93,38 +94,58 @@ body {
   color: transparent;
 }
 
-/* Funky primary button */
+/* Glassy primary button */
 .funky-btn {
   display: inline-flex;
   align-items: center;
   gap: .5rem;
   padding: .5rem 1rem;
   border-radius: .75rem;
-  background-image: linear-gradient(135deg, var(--accent-a), var(--accent-b), var(--accent-c));
-  color: white;
+  color: var(--foreground);
+  background: linear-gradient(
+    to bottom right,
+    color-mix(in oklab, var(--card-bg) 100%, transparent),
+    color-mix(in oklab, var(--card-bg) 80%, transparent)
+  );
+  border: 1px solid color-mix(in oklab, white 35%, transparent);
+  -webkit-backdrop-filter: blur(8px) saturate(150%);
+  backdrop-filter: blur(8px) saturate(150%);
+  box-shadow: 0 12px 28px -18px rgb(0 0 0 / 0.5), inset 0 1px 0 rgb(255 255 255 / 0.2);
   font-weight: 700;
-  box-shadow: 0 14px 30px -12px rgb(6 182 212 / 0.6);
   transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
 }
-.funky-btn:hover { transform: translateY(-1px); filter: saturate(1.08); box-shadow: 0 18px 38px -12px rgb(6 182 212 / 0.75); }
+.funky-btn:hover { transform: translateY(-1px); filter: saturate(1.08); box-shadow: 0 18px 38px -18px rgb(0 0 0 / 0.6); }
 .funky-btn:active { transform: translateY(0); }
-.funky-btn:focus-visible { outline: 2px solid transparent; box-shadow: 0 0 0 3px rgb(255 255 255 / 0.7), 0 0 0 6px color-mix(in oklab, var(--accent-b) 60%, var(--accent-a)); }
+.funky-btn:focus-visible { outline: 2px solid transparent; box-shadow: 0 0 0 2px rgb(255 255 255 / 0.6), 0 0 0 6px color-mix(in oklab, var(--accent-b) 50%, var(--accent-a)); }
 
-/* Funky card with animated border gradient */
+/* Frosted glass cards */
 .funky-card {
   position: relative;
   border-radius: 0.75rem;
-  border: 2px solid transparent;
-  background:
-    linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
-    conic-gradient(from 180deg at 50% 50%, var(--accent-a), var(--accent-b), var(--accent-c), var(--accent-a)) border-box;
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
+  border: 1px solid color-mix(in oklab, white 35%, transparent);
+  background: linear-gradient(
+    to bottom right,
+    color-mix(in oklab, var(--card-bg) 100%, transparent),
+    color-mix(in oklab, var(--card-bg) 85%, transparent)
+  );
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  backdrop-filter: blur(10px) saturate(140%);
+  box-shadow: 0 20px 40px -24px rgb(0 0 0 / 0.45), inset 0 1px 0 rgb(255 255 255 / 0.2);
   transition: transform .18s ease, box-shadow .25s ease, filter .25s ease;
 }
 .funky-card:hover {
-  transform: translateY(-2px) rotateZ(0.15deg);
-  box-shadow: 0 20px 40px -20px color-mix(in oklab, var(--accent-a) 45%, black);
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 26px 50px -24px rgb(0 0 0 / 0.55);
+}
+.funky-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(400px 120px at 20% -10%, rgb(255 255 255 / .35), transparent),
+    linear-gradient(180deg, rgb(255 255 255 / .12), transparent 40%);
 }
 
 /* Minimal theme overrides */
@@ -140,6 +161,7 @@ html[data-theme="minimal"] .glass {
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
   border: 1px solid color-mix(in oklab, var(--foreground) 15%, transparent);
+  box-shadow: none;
 }
 
 html[data-theme="minimal"] .funky-sep { display: none; }

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-type Theme = "funky" | "minimal";
+type Theme = "glass" | "minimal";
 const STORAGE_KEY = "theme";
 
 function applyTheme(t: Theme) {
@@ -12,17 +12,17 @@ function applyTheme(t: Theme) {
 }
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>("funky");
+  const [theme, setTheme] = useState<Theme>("glass");
 
   useEffect(() => {
     const saved = (typeof window !== "undefined" && localStorage.getItem(STORAGE_KEY)) as Theme | null;
-    const initial: Theme = saved === "minimal" ? "minimal" : "funky";
+    const initial: Theme = saved === "minimal" ? "minimal" : "glass";
     setTheme(initial);
     applyTheme(initial);
   }, []);
 
   function toggle() {
-    const next: Theme = theme === "minimal" ? "funky" : "minimal";
+    const next: Theme = theme === "minimal" ? "glass" : "minimal";
     setTheme(next);
     applyTheme(next);
     try {
@@ -35,10 +35,10 @@ export default function ThemeToggle() {
       type="button"
       onClick={toggle}
       aria-pressed={theme === "minimal"}
-      title={theme === "minimal" ? "Switch to Funky theme" : "Switch to Minimal theme"}
+      title={theme === "minimal" ? "Switch to Glass theme" : "Switch to Minimal theme"}
       className="px-3 py-1 rounded-md border border-black/15 dark:border-white/20 text-xs hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
     >
-      {theme === "minimal" ? "Funky theme" : "Minimal theme"}
+      {theme === "minimal" ? "Glass theme" : "Minimal theme"}
     </button>
   );
 }
